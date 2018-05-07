@@ -1,6 +1,28 @@
 import numpy as np
 import numpy.matlib as mlib
+import numpy.linalg as lalib
+import matplotlib.pyplot as plt
+import create_database as cd
 
+
+def inverseEuclid(data):
+    n = data.shape[0] # database size
+    S = np.zeros([n,n]) # similarity matrix 
+    s = np.zeros(n) # store pairwise similarities
+    idx = 0
+    
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                s[idx] = -lalib.norm(data[i,:]-data[j,:])
+                S[i,j] = s[idx]
+
+    for i in range(n):
+        S[i,i] = np.median(s)
+    
+    return S
+        
+    
 def affinityPropagationR(data, similarityFunction, lam = 0.5, maxiter = 100):
     ''' 
     data: database (n x m matrix)
@@ -44,7 +66,7 @@ def affinityPropagationR(data, similarityFunction, lam = 0.5, maxiter = 100):
         Aold = A
         
         # Get the matrix with positive responsibility values 
-        Rp = np.maximum(R,np.zeros(n,n))
+        Rp = np.maximum(R,np.zeros([n,n]))
         
         # Copy the main diagonal  
         for i in range(1,n):
@@ -54,7 +76,7 @@ def affinityPropagationR(data, similarityFunction, lam = 0.5, maxiter = 100):
 
         # Get diagonal of A
         dA = np.diag(A)
-        A = np.maximum(A,np.zeros(n,n))
+        A = np.maximum(A,np.zeros([n,n]))
         
         for i in range(1,n):
             A[i,i] = dA[i]

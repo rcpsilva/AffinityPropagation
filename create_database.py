@@ -4,6 +4,8 @@ from mpl_toolkits.mplot3d import Axes3D
 
 def generateTData(nsamples):
 
+    print('Generating database ...')
+
     timeStamps = np.linspace(10, 1000, num=nsamples)*0.05+50;
     positions = np.ones(nsamples);
     irradiance = np.sin(timeStamps)*timeStamps+timeStamps*5
@@ -27,7 +29,7 @@ def generateTData(nsamples):
     #plt.plot(data[0:nsamples,1],data[0:nsamples,2],'r.')
     #plt.plot(data[nsamples:2*nsamples,1],data[nsamples:2*nsamples,2],'g.')
     #plt.plot(data[2*nsamples:3*nsamples,1],data[2*nsamples:3*nsamples,2],'b.') 
-    
+    print(' done!')
     return data
 
 def plotTData(data):
@@ -49,6 +51,6 @@ def plotTData(data):
 
     plt.show() 
 
-data = generateTData(25)
-print(data)
-plotTData(data)
+#data = generateTData(25)
+#print(data)
+#plotTData(data)
