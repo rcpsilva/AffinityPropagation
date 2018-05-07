@@ -17,8 +17,6 @@ def affinityPropagationR(data, similarityFunction, lam = 0.5, maxiter = 100):
     
     # Compute similarities #IMPLEMENT THIS!!!
     
-    
-    ddd
     for it in range(1,maxiter):
         #Compute responsibilities
         Rold = R
