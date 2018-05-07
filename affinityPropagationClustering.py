@@ -139,12 +139,12 @@ def affinityPropagationR2(data, similarityFunction, lam = 0.5, maxiter = 100):
     
     for it in range(0,maxiter):
         
-        print('{:d} of {:d}'.format(it,maxiter))
+        #print('{:d} of {:d}'.format(it,maxiter))
         #Compute responsibilities
         Rold = R
         AS = A+S
        
-        print('Compute responsibilities...')
+        #print('Compute responsibilities...')
         for i in range(0,n):
             for j in range(0,n):
                 # find max in row i (of AS) such that k != j
@@ -157,7 +157,7 @@ def affinityPropagationR2(data, similarityFunction, lam = 0.5, maxiter = 100):
         # Dampen responsibilities
         R = (1-lam)*R + lam*Rold;
         
-        print('Compute Availabilities...')
+        #print('Compute Availabilities...')
         # Compute availabilities 
         Aold = A
         
@@ -183,7 +183,7 @@ def affinityPropagationR2(data, similarityFunction, lam = 0.5, maxiter = 100):
          
     E = R+A #Pseudo marginals
     ####################
-    #print(R)
+    print(E)
     #print(A)
     #print(np.diag(E))
     #print(np.diag(E)>0)

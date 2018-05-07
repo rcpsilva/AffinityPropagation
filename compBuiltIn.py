@@ -5,7 +5,7 @@ import create_database as cd
 import affinityPropagationClustering as myaff
 
 centers = [[1, 1], [-1, -1], [1, -1]]
-data, labels_true = make_blobs(n_samples=300, centers=centers, cluster_std=0.5, random_state=0)
+data, labels_true = make_blobs(n_samples=20, centers=centers, cluster_std=0.5, random_state=0)
 #print(data)
 #data = cd.generateTData(100)
 #data = data[:,[0,2]]
